@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStringListModel>
+#include <QLabel>
 
 namespace Ui {
 class MainWindow;
@@ -25,10 +26,16 @@ private slots:
 
     void on_actSave_triggered();
 
+    void on_listView_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
-    QStringListModel *bookModel;
-    QString aFileName;
+    QStringListModel *indexModel;       //声明目录索引数据模型变量
+    QString aFileName;                  //声明书籍文件路径存储变量
+    QLabel *bookName;
+    QLabel *progress;
+    QLabel *bookCount;
+    int bookNum;
 };
 
 #endif // MAINWINDOW_H

@@ -6,18 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>530</width>
-    <height>397</height>
+    <width>534</width>
+    <height>475</height>
    </rect>
   </property>
   <property name="maximumSize">
    <size>
-    <width>600</width>
-    <height>500</height>
+    <width>16777215</width>
+    <height>16777215</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Qt读书管理器</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -40,15 +40,30 @@
         <property name="title">
          <string>书籍阅读信息</string>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_6">
+        <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
+          <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1">
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,2">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
-              <widget class="QLabel" name="label">
+              <widget class="QLabel" name="bookSnap">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::NoFrame</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Plain</enum>
+               </property>
                <property name="text">
-                <string>TextLabel</string>
+                <string>书籍信息</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
                </property>
               </widget>
              </item>
@@ -57,7 +72,7 @@
                <property name="title">
                 <string>图书信息</string>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_4">
+               <layout class="QVBoxLayout" name="verticalLayout_6">
                 <item>
                  <widget class="QLabel" name="label_2">
                   <property name="text">
@@ -117,7 +132,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>530</width>
+     <width>534</width>
      <height>23</height>
     </rect>
    </property>
@@ -143,7 +158,7 @@
   <action name="actAddBook">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/images/icons/1218739.png</normaloff>:/images/icons/1218739.png</iconset>
+     <normaloff>:/images/icons/new.ico</normaloff>:/images/icons/new.ico</iconset>
    </property>
    <property name="text">
     <string>添加书籍</string>
@@ -158,7 +173,7 @@
   <action name="actImportLibrary">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/images/icons/1218781.png</normaloff>:/images/icons/1218781.png</iconset>
+     <normaloff>:/images/icons/import.ico</normaloff>:/images/icons/import.ico</iconset>
    </property>
    <property name="text">
     <string>导入书库</string>
@@ -173,7 +188,7 @@
   <action name="actEditUnable">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/images/icons/1218744.png</normaloff>:/images/icons/1218744.png</iconset>
+     <normaloff>:/images/icons/Uneditabl.ico</normaloff>:/images/icons/Uneditabl.ico</iconset>
    </property>
    <property name="text">
     <string>取消编辑</string>
@@ -185,7 +200,7 @@
   <action name="actSave">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/images/icons/1218767.png</normaloff>:/images/icons/1218767.png</iconset>
+     <normaloff>:/images/icons/save.ico</normaloff>:/images/icons/save.ico</iconset>
    </property>
    <property name="text">
     <string>保存书单</string>
