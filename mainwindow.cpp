@@ -2,9 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 #include <QTextStream>
-#include <QUrl>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
+#include "redownstr.h"
+#include "downpic.h"
+#include "readsnapshot.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -107,36 +107,16 @@ void MainWindow::on_actSave_triggered()
 
 void MainWindow::on_listView_clicked(const QModelIndex &index)
 {
-    QFile aFile(aFileName);
-    QString str;
-    if(aFile.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        QTextStream aStream(&aFile);       //用文本流读取文件
-        while((str = aStream.readLine()) != "")
-        {
-            continue;
-        }
-        while((str = aStream.readLine()) == "")
-        {
-            continue;
-        }
-        for(int i=1;i<=index.row();i++)
-            str = aStream.readLine();
-    }
-    aFile.close();
-    QUrl url(str);
-    bookName->setText(str);
-    QNetworkAccessManager manager;
-    QEventLoop loop;
-    QNetworkReply *reply = manager.get(QNetworkRequest(url));
-    //请求结束并下载完成后，退出子事件循环
-    connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    //开启子事件循环
-    loop.exec();
-    QByteArray jpegData = reply->readAll();
-    QPixmap pixmap;
-    pixmap.loadFromData(jpegData);
-    pixmap = pixmap.scaledToWidth(120, Qt::FastTransformation);
-    ui->bookSnap->setPixmap(pixmap);
-    ui->bookSnap->setScaledContents(false);
+    QString str = reDownStr(aFileName, index);//调用showPicture返回图片地址字符串
+    QPixmap pixmap = downPicture(str);      //下载图片
+    ui->bookSnap->setPixmap(pixmap);        //设置图片
+    ui->bookSnap->setScaledContents(false); //是否缩放
+
+
+    QStringList snapList = readSnapShot(aFileName, index);
+    bookName->setText(snapList.at(0));
+    ui->author->setText("作者: " + snapList.at(0));
+    ui->translator->setText("译者: " + snapList.at(1));
+    ui->section->setText("章节: " + snapList.at(2));
+    ui->PageNum->setText("页数: " + snapList.at(3));
 }

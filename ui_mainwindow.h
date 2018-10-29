@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -20,8 +21,8 @@
 #include <QtWidgets/QListView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -36,25 +37,25 @@ public:
     QAction *actEditUnable;
     QAction *actSave;
     QWidget *centralWidget;
+    QGridLayout *gridLayout_2;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
     QGroupBox *groupBox;
     QVBoxLayout *verticalLayout;
     QListView *listView;
     QGroupBox *groupBox_2;
-    QVBoxLayout *verticalLayout_5;
-    QVBoxLayout *verticalLayout_4;
+    QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout_2;
     QLabel *bookSnap;
     QGroupBox *groupBox_3;
     QVBoxLayout *verticalLayout_6;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
-    QLabel *label_5;
+    QLabel *author;
+    QLabel *translator;
+    QLabel *section;
+    QLabel *PageNum;
     QGroupBox *groupBox_4;
     QVBoxLayout *verticalLayout_2;
-    QPlainTextEdit *plainTextEdit;
+    QTableView *tableView;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -63,7 +64,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(534, 475);
+        MainWindow->resize(626, 552);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         actAddBook = new QAction(MainWindow);
         actAddBook->setObjectName(QStringLiteral("actAddBook"));
@@ -87,9 +88,12 @@ public:
         actSave->setIcon(icon3);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        verticalLayout_3 = new QVBoxLayout(centralWidget);
+        gridLayout_2 = new QGridLayout(centralWidget);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setSpacing(6);
-        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
@@ -110,13 +114,10 @@ public:
 
         groupBox_2 = new QGroupBox(centralWidget);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
-        verticalLayout_5 = new QVBoxLayout(groupBox_2);
-        verticalLayout_5->setSpacing(6);
-        verticalLayout_5->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
-        verticalLayout_4 = new QVBoxLayout();
-        verticalLayout_4->setSpacing(6);
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        gridLayout = new QGridLayout(groupBox_2);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
@@ -139,63 +140,61 @@ public:
         verticalLayout_6->setSpacing(6);
         verticalLayout_6->setContentsMargins(11, 11, 11, 11);
         verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
-        label_2 = new QLabel(groupBox_3);
-        label_2->setObjectName(QStringLiteral("label_2"));
+        author = new QLabel(groupBox_3);
+        author->setObjectName(QStringLiteral("author"));
 
-        verticalLayout_6->addWidget(label_2);
+        verticalLayout_6->addWidget(author);
 
-        label_3 = new QLabel(groupBox_3);
-        label_3->setObjectName(QStringLiteral("label_3"));
+        translator = new QLabel(groupBox_3);
+        translator->setObjectName(QStringLiteral("translator"));
 
-        verticalLayout_6->addWidget(label_3);
+        verticalLayout_6->addWidget(translator);
 
-        label_4 = new QLabel(groupBox_3);
-        label_4->setObjectName(QStringLiteral("label_4"));
+        section = new QLabel(groupBox_3);
+        section->setObjectName(QStringLiteral("section"));
 
-        verticalLayout_6->addWidget(label_4);
+        verticalLayout_6->addWidget(section);
 
-        label_5 = new QLabel(groupBox_3);
-        label_5->setObjectName(QStringLiteral("label_5"));
+        PageNum = new QLabel(groupBox_3);
+        PageNum->setObjectName(QStringLiteral("PageNum"));
 
-        verticalLayout_6->addWidget(label_5);
+        verticalLayout_6->addWidget(PageNum);
 
 
         horizontalLayout_2->addWidget(groupBox_3);
 
 
-        verticalLayout_4->addLayout(horizontalLayout_2);
+        gridLayout->addLayout(horizontalLayout_2, 0, 0, 1, 1);
 
-        groupBox_4 = new QGroupBox(groupBox_2);
+
+        horizontalLayout->addWidget(groupBox_2);
+
+        horizontalLayout->setStretch(0, 1);
+        horizontalLayout->setStretch(1, 1);
+
+        verticalLayout_3->addLayout(horizontalLayout);
+
+        groupBox_4 = new QGroupBox(centralWidget);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
         verticalLayout_2 = new QVBoxLayout(groupBox_4);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        plainTextEdit = new QPlainTextEdit(groupBox_4);
-        plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
+        tableView = new QTableView(groupBox_4);
+        tableView->setObjectName(QStringLiteral("tableView"));
 
-        verticalLayout_2->addWidget(plainTextEdit);
-
-
-        verticalLayout_4->addWidget(groupBox_4);
-
-        verticalLayout_4->setStretch(0, 1);
-        verticalLayout_4->setStretch(1, 1);
-
-        verticalLayout_5->addLayout(verticalLayout_4);
+        verticalLayout_2->addWidget(tableView);
 
 
-        horizontalLayout->addWidget(groupBox_2);
+        verticalLayout_3->addWidget(groupBox_4);
 
-        horizontalLayout->setStretch(0, 4);
-        horizontalLayout->setStretch(1, 5);
 
-        verticalLayout_3->addLayout(horizontalLayout);
+        gridLayout_2->addLayout(verticalLayout_3, 0, 0, 1, 1);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 534, 23));
+        menuBar->setGeometry(QRect(0, 0, 626, 23));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -246,10 +245,10 @@ public:
         groupBox_2->setTitle(QApplication::translate("MainWindow", "\344\271\246\347\261\215\351\230\205\350\257\273\344\277\241\346\201\257", Q_NULLPTR));
         bookSnap->setText(QApplication::translate("MainWindow", "\344\271\246\347\261\215\344\277\241\346\201\257", Q_NULLPTR));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "\345\233\276\344\271\246\344\277\241\346\201\257", Q_NULLPTR));
-        label_2->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        label_3->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        label_4->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        label_5->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        author->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        translator->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        section->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        PageNum->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
         groupBox_4->setTitle(QApplication::translate("MainWindow", "\351\230\205\350\257\273\345\216\206\345\217\262", Q_NULLPTR));
     } // retranslateUi
 

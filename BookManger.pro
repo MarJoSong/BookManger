@@ -26,10 +26,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    downpic.cpp \
+    readsnapshot.cpp \
+    redownstr.cpp \
+    skipitems.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    redownstr.h \
+    downpic.h \
+    readsnapshot.h \
+    skipitems.h
 
 FORMS += \
         mainwindow.ui

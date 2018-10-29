@@ -28,7 +28,11 @@ private slots:
 
     void on_listView_clicked(const QModelIndex &index);
 
+
+    //
+
 private:
+
     Ui::MainWindow *ui;
     QStringListModel *indexModel;       //声明目录索引数据模型变量
     QString aFileName;                  //声明书籍文件路径存储变量
