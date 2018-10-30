@@ -30,14 +30,18 @@ SOURCES += \
     downpic.cpp \
     readsnapshot.cpp \
     redownstr.cpp \
-    skipitems.cpp
+    skipitems.cpp \
+    readindex.cpp \
+    getfilename.cpp
 
 HEADERS += \
         mainwindow.h \
     redownstr.h \
     downpic.h \
     readsnapshot.h \
-    skipitems.h
+    skipitems.h \
+    readindex.h \
+    getfilename.h
 
 FORMS += \
         mainwindow.ui

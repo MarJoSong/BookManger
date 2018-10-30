@@ -1,0 +1,12 @@
+INPUT(
+./release/main.o
+./release/mainwindow.o
+./release/downpic.o
+./release/readsnapshot.o
+./release/redownstr.o
+./release/skipitems.o
+./release/readindex.o
+./release/getfilename.o
+./release/qrc_res.o
+./release/moc_mainwindow.o
+);

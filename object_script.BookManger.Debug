@@ -1,0 +1,12 @@
+INPUT(
+./debug/main.o
+./debug/mainwindow.o
+./debug/downpic.o
+./debug/readsnapshot.o
+./debug/redownstr.o
+./debug/skipitems.o
+./debug/readindex.o
+./debug/getfilename.o
+./debug/qrc_res.o
+./debug/moc_mainwindow.o
+);

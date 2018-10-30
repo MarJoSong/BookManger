@@ -5,18 +5,20 @@
 #include "redownstr.h"
 #include "downpic.h"
 #include "readsnapshot.h"
+#include "readindex.h"
+#include "getfilename.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    bookName = new QLabel("书名: ", this);
-    progress = new QLabel("进度: ", this);
-    bookCount = new QLabel("书籍总数: ", this);
-    ui->statusBar->addWidget(bookName, 1);
-    ui->statusBar->addWidget(progress, 1);
-    ui->statusBar->addWidget(bookCount, 1);
+    softInfo = new QLabel("基于Qt 5.9.1");
+    readTime = new QLabel("阅读时间: ", this);
+    readProcess = new QLabel("阅读进度: ", this);
+    ui->statusBar->addWidget(softInfo, 1);
+    ui->statusBar->addWidget(readTime, 1);
+    ui->statusBar->addWidget(readProcess, 1);
 
 
     QStringList bookList;
@@ -36,38 +38,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actImportLibrary_triggered()
 {
-    QString curPath = QCoreApplication::applicationDirPath();//获取程序当前所在路径
-    aFileName = QFileDialog::getOpenFileName(this, "选择一个文件", curPath,
-                                             "书库文件(*.book)");
-    bookNum = 0;
+    QString aFileName = getFileName(aFileName);
 
-    if(aFileName.isEmpty())
-        return;
+    QStringList readBookLib = readIndex(aFileName, bookNum, indexModel);
 
-    QStringList readBookLib;
-    QFile aFile(aFileName);
+    indexModel->setStringList(readBookLib);
+    //ui->listView->setModel(bookModel);
+    ui->listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    if(aFile.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        QTextStream aStream(&aFile);       //用文本流读取文件
-        indexModel->removeRows(0,indexModel->rowCount());//清空列表
-
-        while(!aStream.atEnd())
-        {
-            QString str;
-            if((str = aStream.readLine()) == "")
-                break;
-
-            //读取一行，自动去掉行尾的多余空格，类似于QString::trimmed()
-            readBookLib.append(str);
-            bookNum++;
-        }
-        aFile.close();
-        bookCount->setText(QString::asprintf("书籍总数: %d册",bookNum));
-        indexModel->setStringList(readBookLib);
-        //ui->listView->setModel(bookModel);
-        ui->listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    }
 }
 
 void MainWindow::on_actAddBook_triggered()
@@ -110,13 +88,14 @@ void MainWindow::on_listView_clicked(const QModelIndex &index)
     QString str = reDownStr(aFileName, index);//调用showPicture返回图片地址字符串
     QPixmap pixmap = downPicture(str);      //下载图片
     ui->bookSnap->setPixmap(pixmap);        //设置图片
-    ui->bookSnap->setScaledContents(false); //是否缩放
 
 
     QStringList snapList = readSnapShot(aFileName, index);
-    bookName->setText(snapList.at(0));
+
     ui->author->setText("作者: " + snapList.at(0));
     ui->translator->setText("译者: " + snapList.at(1));
-    ui->section->setText("章节: " + snapList.at(2));
+    ui->section->setText("出版日期: " + snapList.at(2));
     ui->PageNum->setText("页数: " + snapList.at(3));
 }
+
+

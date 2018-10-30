@@ -36,9 +36,9 @@ private:
     Ui::MainWindow *ui;
     QStringListModel *indexModel;       //声明目录索引数据模型变量
     QString aFileName;                  //声明书籍文件路径存储变量
-    QLabel *bookName;
-    QLabel *progress;
-    QLabel *bookCount;
+    QLabel *softInfo;
+    QLabel *readTime;
+    QLabel *readProcess;
     int bookNum;
 };
 
