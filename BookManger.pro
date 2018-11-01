@@ -32,7 +32,7 @@ SOURCES += \
     redownstr.cpp \
     skipitems.cpp \
     readindex.cpp \
-    getfilename.cpp
+    showtablecontent.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +41,7 @@ HEADERS += \
     readsnapshot.h \
     skipitems.h \
     readindex.h \
-    getfilename.h
+    showtablecontent.h
 
 FORMS += \
         mainwindow.ui

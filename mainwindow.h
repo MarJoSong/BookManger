@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStringListModel>
+#include <QStandardItemModel>
 #include <QLabel>
 
 namespace Ui {
@@ -35,6 +36,7 @@ private:
 
     Ui::MainWindow *ui;
     QStringListModel *indexModel;       //声明目录索引数据模型变量
+    QStandardItemModel *readInfoModel;
     QString aFileName;                  //声明书籍文件路径存储变量
     QLabel *softInfo;
     QLabel *readTime;

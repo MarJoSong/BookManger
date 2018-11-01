@@ -6,7 +6,7 @@
 #include "downpic.h"
 #include "readsnapshot.h"
 #include "readindex.h"
-#include "getfilename.h"
+#include "showtablecontent.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,6 +29,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
     //设置listView条目编辑c触发条件，如QAbstractItemView::DoubleClicked或
     //QAbstractItemView::SelectedClicked
+    QStringList readInfoHeader;
+    readInfoHeader << "阅读日期" << "在阅章节" << "已阅页数" << "阅读进度";
+    readInfoModel = new QStandardItemModel(this);
+    readInfoModel->setHorizontalHeaderLabels(readInfoHeader);
+    ui->tableView->setModel(readInfoModel);
+    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
 }
 
 MainWindow::~MainWindow()
@@ -38,7 +45,9 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actImportLibrary_triggered()
 {
-    QString aFileName = getFileName(aFileName);
+    QString curPath = QCoreApplication::applicationDirPath();//获取程序当前所在路径
+    aFileName = QFileDialog::getOpenFileName(0, "选择一个文件", curPath,
+                                             "书库文件(*.book)");
 
     QStringList readBookLib = readIndex(aFileName, bookNum, indexModel);
 
@@ -96,6 +105,8 @@ void MainWindow::on_listView_clicked(const QModelIndex &index)
     ui->translator->setText("译者: " + snapList.at(1));
     ui->section->setText("出版日期: " + snapList.at(2));
     ui->PageNum->setText("页数: " + snapList.at(3));
+
+    showTableContent(aFileName, index, readInfoModel);
 }
 
 

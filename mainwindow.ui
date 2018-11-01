@@ -60,7 +60,7 @@
                 <enum>QFrame::Plain</enum>
                </property>
                <property name="text">
-                <string>书籍信息</string>
+                <string>书籍封面</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -76,28 +76,28 @@
                 <item>
                  <widget class="QLabel" name="author">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>作者:</string>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="translator">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>译者:</string>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="section">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>出版日期: </string>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QLabel" name="PageNum">
                   <property name="text">
-                   <string>TextLabel</string>
+                   <string>页数:</string>
                   </property>
                  </widget>
                 </item>

@@ -243,12 +243,12 @@ public:
 #endif // QT_NO_TOOLTIP
         groupBox->setTitle(QApplication::translate("MainWindow", "\345\234\250\350\257\273\344\271\246\347\261\215\345\210\227\350\241\250", Q_NULLPTR));
         groupBox_2->setTitle(QApplication::translate("MainWindow", "\344\271\246\347\261\215\351\230\205\350\257\273\344\277\241\346\201\257", Q_NULLPTR));
-        bookSnap->setText(QApplication::translate("MainWindow", "\344\271\246\347\261\215\344\277\241\346\201\257", Q_NULLPTR));
+        bookSnap->setText(QApplication::translate("MainWindow", "\344\271\246\347\261\215\345\260\201\351\235\242", Q_NULLPTR));
         groupBox_3->setTitle(QApplication::translate("MainWindow", "\345\233\276\344\271\246\344\277\241\346\201\257", Q_NULLPTR));
-        author->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        translator->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        section->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        PageNum->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        author->setText(QApplication::translate("MainWindow", "\344\275\234\350\200\205:", Q_NULLPTR));
+        translator->setText(QApplication::translate("MainWindow", "\350\257\221\350\200\205:", Q_NULLPTR));
+        section->setText(QApplication::translate("MainWindow", "\345\207\272\347\211\210\346\227\245\346\234\237: ", Q_NULLPTR));
+        PageNum->setText(QApplication::translate("MainWindow", "\351\241\265\346\225\260:", Q_NULLPTR));
         groupBox_4->setTitle(QApplication::translate("MainWindow", "\351\230\205\350\257\273\345\216\206\345\217\262", Q_NULLPTR));
     } // retranslateUi
 
