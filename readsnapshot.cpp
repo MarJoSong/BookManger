@@ -11,6 +11,7 @@ QStringList readSnapShot(QString aFileName, const QModelIndex &index)
     if(aFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream aStream(&aFile);
+        aStream.setAutoDetectUnicode(true);
 
         skipItems(aStream);
         snap = skipItems(aStream);

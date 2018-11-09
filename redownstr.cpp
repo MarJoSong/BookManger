@@ -10,6 +10,7 @@ QString reDownStr(QString aFileName, const QModelIndex & index)
     if(aFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream aStream(&aFile);       //用文本流读取文件
+        aStream.setAutoDetectUnicode(true);
 
         str = skipItems(aStream);
 

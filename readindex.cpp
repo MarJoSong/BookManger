@@ -16,6 +16,7 @@ QStringList readIndex(QString aFileName, int &bookNum, QStringListModel *indexMo
     if(aFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream aStream(&aFile);       //用文本流读取文件
+        aStream.setAutoDetectUnicode(true);
         indexModel->removeRows(0,indexModel->rowCount());//清空列表
 
         while(!aStream.atEnd())

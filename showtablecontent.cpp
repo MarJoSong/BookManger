@@ -17,6 +17,7 @@ void showTableContent(QString aFileName, const QModelIndex &index, QStandardItem
     if(aFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         QTextStream aStream(&aFile);       //用文本流读取文件
+        aStream.setAutoDetectUnicode(true);
 
         for(int i=0;i<=index.row();i++)
         {
